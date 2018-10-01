@@ -11,7 +11,7 @@ objects:
     source:
       type: Git
       git:
-        uri: "https://github.com/wkulhanek/docker-openshift-sonarqube"
+        uri: "https://github.com/szathiago/docker-openshift-sonarqube"
     strategy:
       type: "Docker"
     output:
@@ -111,13 +111,13 @@ objects:
           terminationMessagePath: /dev/termination-log
           volumeMounts:
           - mountPath: /var/lib/pgsql/data
-            name: postgresql-data
+            name: postgresql-data-10
         dnsPolicy: ClusterFirst
         restartPolicy: Always
         securityContext: {}
         terminationGracePeriodSeconds: 30
         volumes:
-        - name: postgresql-data
+        - name: postgresql-data-10
           persistentVolumeClaim:
             claimName: "${DATABASE_SERVICE_NAME}"
     triggers:

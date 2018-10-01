@@ -1,7 +1,7 @@
 FROM docker.io/centos:7
 LABEL maintainer="Wolfgang Kulhanek <WolfgangKulhanek@gmail.com>"
 
-ENV SONAR_VERSION=6.7.5 \
+ENV SONAR_VERSION=7.3 \
     SONARQUBE_HOME=/opt/sonarqube
 
 LABEL name="SonarQube" \
@@ -9,7 +9,7 @@ LABEL name="SonarQube" \
       io.k8s.description="Provide a SonarQube image to run on Red Hat OpenShift" \
       io.openshift.expose-services="9000" \
       io.openshift.tags="sonarqube" \
-      build-date="2018-08-09" \
+      build-date="2018-08-13" \
       version=$SONAR_VERSION \
       release="1"
 
@@ -22,7 +22,7 @@ RUN yum -y install epel-release \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && cd /tmp \
-    && curl -o sonarqube.zip -fSL https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$SONAR_VERSION.zip \
+    && curl -o sonarqube.zip -fSL https://nexus13.appdes.bvnet.bv/repository/raw/sonarqube-$SONAR_VERSION.zip \
     && cd /opt \
     && unzip /tmp/sonarqube.zip \
     && mv sonarqube-$SONAR_VERSION sonarqube \
