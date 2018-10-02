@@ -24,8 +24,9 @@ RUN yum -y install epel-release \
     && cd /tmp \
     && curl -k -o sonarqube.zip -fSL https://nexus13.appdes.bvnet.bv/repository/raw/sonarqube-7.3.zip \
     && cd /opt \
+    && mkdir sonarqube \
+    && cd sonarqube \
     && unzip /tmp/sonarqube.zip \
-    && mv sonarqube-$SONAR_VERSION sonarqube \
     && rm /tmp/sonarqube.zip*
 ADD root /
 
