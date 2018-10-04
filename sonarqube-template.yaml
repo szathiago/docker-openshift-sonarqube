@@ -11,6 +11,7 @@ objects:
     source:
       type: Git
       git:
+        ref: teste6
         uri: "https://github.com/szathiago/docker-openshift-sonarqube"
     strategy:
       type: "Docker"
