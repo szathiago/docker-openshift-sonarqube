@@ -18,7 +18,7 @@ EXPOSE 9000
 RUN yum -y install epel-release \
     && yum repolist \
     && yum -y update \
-    && yum -y install nodejs && npm config set registry https://nexus.bvnet.bv/repository/npm-group/ && npm install tslint typescript -g && yum -y install unzip java-1.8.0-openjdk nss_wrapper \
+    && yum -y install nodejs && npm config set registry https://nexus.bvnet.bv/repository/npm-group/ && npm config set strict-ssl false && npm install tslint typescript -g && yum -y install unzip java-1.8.0-openjdk nss_wrapper \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && cd /tmp \
