@@ -112,13 +112,13 @@ objects:
           terminationMessagePath: /dev/termination-log
           volumeMounts:
           - mountPath: /var/lib/pgsql/data
-            name: postgresql-data-10
+            name: postgresql-data-11
         dnsPolicy: ClusterFirst
         restartPolicy: Always
         securityContext: {}
         terminationGracePeriodSeconds: 30
         volumes:
-        - name: postgresql-data-10
+        - name: postgresql-data-11
           persistentVolumeClaim:
             claimName: "${DATABASE_SERVICE_NAME}"
     triggers:
