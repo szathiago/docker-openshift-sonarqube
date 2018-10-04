@@ -1,7 +1,7 @@
 FROM docker.io/centos:7
 LABEL maintainer="Wolfgang Kulhanek <WolfgangKulhanek@gmail.com>"
 
-ENV SONAR_VERSION=7.3 \
+ENV SONAR_VERSION=7.1 \
     SONARQUBE_HOME=/opt/sonarqube
 
 LABEL name="SonarQube" \
@@ -22,7 +22,7 @@ RUN yum -y install epel-release \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && cd /tmp \
-    && curl -k -o sonarqube.zip -fSL https://nexus13.appdes.bvnet.bv/repository/raw/sonarqube-7.3x.zip \
+    && curl -k -o sonarqube.zip -fSL https://nexus13.appdes.bvnet.bv/repository/raw/sonarqube-7.1.zip \
     && cd /opt \
     && mkdir sonarqube \
     && cd sonarqube \
