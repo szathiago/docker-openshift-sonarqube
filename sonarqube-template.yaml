@@ -6,12 +6,12 @@ objects:
 - apiVersion: "v1"
   kind: "BuildConfig"
   metadata:
-    name: "sonarqube"
+    name: "sonarqube633x22"
   spec:
     source:
       type: Git
       git:
-        ref: teste6
+        ref: teste12
         uri: "https://github.com/szathiago/docker-openshift-sonarqube"
     strategy:
       type: "Docker"
@@ -134,7 +134,7 @@ objects:
     replicas: 1
     selector:
       app: sonarqube
-      deploymentconfig: sonarqube
+      deploymentconfig: sonarqube633x2
     strategy:
       resources: {}
       rollingParams:
@@ -150,7 +150,7 @@ objects:
         creationTimestamp: null
         labels:
           app: sonarqube
-          deploymentconfig: sonarqube
+          deploymentconfig: sonarqube633x22
       spec:
         containers:
         - env:
@@ -242,7 +242,7 @@ objects:
       targetPort: 9000
     selector:
       app: sonarqube
-      deploymentconfig: sonarqube
+      deploymentconfig: sonarqube633
     sessionAffinity: None
     type: ClusterIP
 - apiVersion: v1
