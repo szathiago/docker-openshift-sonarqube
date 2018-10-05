@@ -1,7 +1,7 @@
 FROM docker.io/centos:7
-LABEL maintainer="Wolfgang Kulhanek <WolfgangKulhanek@gmail.com>"
+LABEL maintainer="Thiago Rocha <thiagorocha@xxxxxx.com>"
 
-ENV SONAR_VERSION=6.3 \
+ENV SONAR_VERSION=7.3 \
     SONARQUBE_HOME=/opt/sonarqube
 
 LABEL name="SonarQube" \
@@ -9,7 +9,7 @@ LABEL name="SonarQube" \
       io.k8s.description="Provide a SonarQube image to run on Red Hat OpenShift" \
       io.openshift.expose-services="9000" \
       io.openshift.tags="sonarqube" \
-      build-date="2018-08-09" \
+      build-date="2018-08-13" \
       version=$SONAR_VERSION \
       release="1"
 
@@ -18,15 +18,15 @@ EXPOSE 9000
 RUN yum -y install epel-release \
     && yum repolist \
     && yum -y update \
-    && yum -y install nodejs && npm config set registry https://nexus.bvnet.bv/repository/npm-group/ && npm config set strict-ssl false && npm install tslint typescript -g && yum -y install unzip java-1.8.0-openjdk nss_wrapper \
+    && yum -y install unzip java-1.8.0-openjdk nss_wrapper \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && cd /tmp \
-    && curl -o sonarqube.zip -fSL https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$SONAR_VERSION.zip \
+    && curl -k -o sonarqube.zip -fSL https://nexus13.appdes.bvnet.bv/repository/raw/sonarqube-7.3-plus-addons.zip \
     && cd /opt \
+    && mkdir sonarqube \
+    && cd sonarqube \
     && unzip /tmp/sonarqube.zip \
-    && mv sonarqube-$SONAR_VERSION sonarqube \
-    && cd sonarqube/extensions/plugins && curl -o sonar-typescript-plugin-1.1.0.jar -fSL https://github.com/Pablissimo/SonarTsPlugin/releases/download/v1.1.0/sonar-typescript-plugin-1.1.0.jar \
     && rm /tmp/sonarqube.zip*
 ADD root /
 

@@ -124,15 +124,15 @@ objects:
           terminationMessagePath: /dev/termination-log
           volumeMounts:
           - mountPath: /opt/sonarqube/data
-            name: sonarqube-data63
+            name: sonarqube-data67
         dnsPolicy: ClusterFirst
         restartPolicy: Always
         securityContext: {}
         terminationGracePeriodSeconds: 30
         volumes:
-        - name: sonarqube-data63
+        - name: sonarqube-data67
           persistentVolumeClaim:
-            claimName: sonarqube-data63
+            claimName: sonarqube-data67
     triggers:
     - type: ConfigChange
     - imageChangeParams:
@@ -226,15 +226,15 @@ objects:
           terminationMessagePath: /dev/termination-log
           volumeMounts:
           - mountPath: /var/lib/pgsql/data
-            name: postgresql-data63
+            name: postgresql-data67
         dnsPolicy: ClusterFirst
         restartPolicy: Always
         securityContext: {}
         terminationGracePeriodSeconds: 30
         volumes:
-        - name: postgresql-data63
+        - name: postgresql-data67
           persistentVolumeClaim:
-            claimName: postgresql-sonarqube-data63
+            claimName: postgresql-sonarqube-data67
     test: false
     triggers:
     - imageChangeParams:
@@ -250,7 +250,7 @@ objects:
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
-    name: postgresql-sonarqube-data63
+    name: postgresql-sonarqube-data67
   spec:
     accessModes:
     - ReadWriteOnce
@@ -260,7 +260,7 @@ objects:
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
-    name: sonarqube-data63
+    name: sonarqube-data67
   spec:
     accessModes:
     - ReadWriteOnce

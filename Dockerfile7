@@ -1,7 +1,7 @@
 FROM docker.io/centos:7
 LABEL maintainer="Wolfgang Kulhanek <WolfgangKulhanek@gmail.com>"
 
-ENV SONAR_VERSION=7.1 \
+ENV SONAR_VERSION=7.3 \
     SONARQUBE_HOME=/opt/sonarqube
 
 LABEL name="SonarQube" \
@@ -18,14 +18,15 @@ EXPOSE 9000
 RUN yum -y install epel-release \
     && yum repolist \
     && yum -y update \
-    && yum -y install unzip java-1.8.0-openjdk nss_wrapper \
+    && yum -y install nodejs && npm config set registry https://nexus.bvnet.bv/repository/npm-group/ && npm config set strict-ssl false && npm install tslint typescript -g && yum -y install unzip java-1.8.0-openjdk nss_wrapper \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && cd /tmp \
-    && curl -o sonarqube.zip -fSL https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$SONAR_VERSION.zip \
+    && curl -k -o sonarqube.zip -fSL https://nexus.bvnet.bv/repository/raw/sonarqube-7.3.zip \
     && cd /opt \
+    && mkdir sonarqube \
+    && cd sonarqube \
     && unzip /tmp/sonarqube.zip \
-    && mv sonarqube-$SONAR_VERSION sonarqube \
     && rm /tmp/sonarqube.zip*
 ADD root /
 
