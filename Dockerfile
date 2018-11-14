@@ -22,7 +22,7 @@ RUN yum -y install epel-release \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && cd /tmp \
-    && curl -k -o sonarqube.zip -fSL https://nexus13.appdes.bvnet.bv/repository/raw/sonarqube-7.3-plus-addons.zip \
+    && curl -k -o sonarqube.zip -fSL https://nexus.bvnet.bv/repository/raw/sonar/sonarqube-7.3-plus-addons.zip \
     && cd /opt \
     && mkdir sonarqube \
     && cd sonarqube \
